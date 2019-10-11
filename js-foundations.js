@@ -54,13 +54,13 @@ const wordsCapitalizer = (words) => {
     return words.map(word => wordCapitalizer(word));
 }
 
-// console.log(wordCapitalizer(randomNouns[0]))
+// console.log(wordCapitalizer(randomNouns[0])) . //to check the funciton for individual word;
 console.log(wordsCapitalizer(randomNouns));
-
 
 // 3c. STRETCH: Create a function that returns the length of each string from the randomNouns variable. Expected output: [10, 6, 5, 10, 6, 11, 8]
 
-
+const countLength = (arr) => {return arr.map(word => word.length)};
+console.log(countLength(randomNouns));
 
 
 // -------------------------------------- Consider the variables:
@@ -70,10 +70,22 @@ var testString3 = "sandiego"
 
 // 4a. Write a function called alphabetSoup that takes one argument and returns a string with all the letters in alphabetical order. Use each of the varibales as test cases. Expected output: "aelnr" "aacdemy" "adeginos"
 
+const alphabetSoup = (arg) => {
+    return arg.split("").sort().join("")
+}
 
+// console.log("academy".split("").sort().join(""))
+console.log(alphabetSoup(testString1));
+console.log(alphabetSoup(testString2));
+console.log(alphabetSoup(testString3));
 
 // 4b. Write a function that takes in all three variables and returns a string with all the letters in alphabetical order. Expected output: "aaaacddeeegilmnnorsy"
 
+const alphabetSoupMultiInputs = (...arg) => {
+    return arg.join("").split("").sort().join("")
+}
+
+console.log(alphabetSoupMultiInputs(testString1,testString2,testString3));
 
 
 // ------------------------------------- Consider the variables:
@@ -82,6 +94,16 @@ var animals = ["ducks", "elephants", "pangolins", "zebras", "giraffes", "penguin
 
 // 5a. Write a function that takes the two variables and returns a combined string. Expected output: "9 ducks 1 elephants 8 pangolins 16 zebras 5 giraffes 1 penguins 42 llamas"
 
+const combineString = (var1,var2) => {
+    return var1.length === var2.length ? 'function goes here' : "Variables are not the same length";
+}
+
+const joinVars = (var1, var2) => {
+    var1.map(x => x + var2.indexOf(var1));
+}
+
+console.log(joinVars(amounts,animals));
+// console.log(amounts.indexOf(amounts[2]));
 
 
 // 5b. STRETCH: Create a function that combines the two variables and updates the animal to be singular if the animal's corresponding number is 1. Expected output: "9 ducks 1 elephant 8 pangolins 16 zebras 5 giraffes 1 penguin 42 llamas"
