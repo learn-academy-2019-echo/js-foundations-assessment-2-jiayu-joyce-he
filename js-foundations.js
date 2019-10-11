@@ -3,10 +3,29 @@
 
 // 1. Write a function that takes a number as an argument and decides if the number is evenly divisble by three or not. Use the test cases 15, 0, 385, -7. Expected output: "15 is divisible by three", "0 is divisible by three", "385 is not divisble by three", "-7 is not divisble by three".
 
+const ifDindivisibleBy3 = (num) => {
+    return num%3 === 0 ? (`${num} is divisible by three`): (`${num} is not divisible by three`)
+}
+
+console.log(ifDindivisibleBy3(15));
+console.log(ifDindivisibleBy3(0));
+console.log(ifDindivisibleBy3(385));
+console.log(ifDindivisibleBy3(7));
 
 
 // 2. Create an object called helloMe. Include your firstName, lastName and TWO OTHER properties of you. Add a method to your object that will return a sentence using the object properties to describe you.
 
+const helloMe = {
+    firstName: "Joyce",
+    lastName: "He",
+    age: 24,
+    gender: "female",
+    describe(){
+        return (`${this.firstName} ${this.lastName} is ${this.gender} age ${this.age}.`)
+    }
+}
+
+console.log(helloMe.describe())
 
 
 // ------------------------------------- Consider the variable:
@@ -15,10 +34,28 @@ var randomNouns = ["streetlamp", "potato", "teeth", "conclusion", "nephew", "tem
 
 // 3a. Write a function that returns every other item from the array as one string. Expected output: "streetlamp teeth nephew database"
 
+const everyOtherItemToString = (arr) => { 
+    const string = arr.filter(word => arr.indexOf(word) % 2 === 0)
+    return string.join(" ")    
+};
+
+console.log(everyOtherItemToString(randomNouns));
 
 
 // 3b. Create a function that takes in the variable and returns the array with all the words capitalized. Expected output: ["Streetlamp", "Potato", "Teeth", "Conclusion", "Nephew", "Temperature", "Database"]
 
+const wordCapitalizer = (word) => { 
+    let arr = word.split("");
+    arr.splice(0,1, arr[0].toUpperCase())
+    return arr.join("")
+};
+
+const wordsCapitalizer = (words) => {
+    return words.map(word => wordCapitalizer(word));
+}
+
+// console.log(wordCapitalizer(randomNouns[0]))
+console.log(wordsCapitalizer(randomNouns));
 
 
 // 3c. STRETCH: Create a function that returns the length of each string from the randomNouns variable. Expected output: [10, 6, 5, 10, 6, 11, 8]
