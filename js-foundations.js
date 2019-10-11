@@ -94,19 +94,35 @@ var animals = ["ducks", "elephants", "pangolins", "zebras", "giraffes", "penguin
 
 // 5a. Write a function that takes the two variables and returns a combined string. Expected output: "9 ducks 1 elephants 8 pangolins 16 zebras 5 giraffes 1 penguins 42 llamas"
 
-const combineString = (arr1,arr2) => {
-    return arr1.length === arr2.length ? arr1.map(arr1element => (
-        arr1element.toString() + 
-        " " + 
-        arr2[arr1.indexOf(arr1element)])).join(" ") : "Variables are not the same length";
+const joinVars = (arr1, arr2) => {
+    return arr1.map(arr1element => (arr1element.toString() + " " + arr2[arr1.indexOf(arr1element)])).join(" ");
 }
 
-// const joinVars = (arr1, arr2) => {
-//     return arr1.map(arr1element => (arr1element.toString() + " " + arr2[arr1.indexOf(arr1element)])).join(" ");
-// }
+const combineString = (arr1,arr2) => {
+    return arr1.length === arr2.length ? joinVars(arr1,arr2) : "Variables are not the same length";
+}
 
 console.log(combineString(amounts,animals));
 
 
 // 5b. STRETCH: Create a function that combines the two variables and updates the animal to be singular if the animal's corresponding number is 1. Expected output: "9 ducks 1 elephant 8 pangolins 16 zebras 5 giraffes 1 penguin 42 llamas"
 
+function joinVarsAdjustSingular (arr1, arr2) {
+    // let isSinglular = arr1.map(arr1element => arr1element === 1)
+    let beforeJoin = arr1.map(
+        arr1element => (
+            arr1element.toString() + " " + (
+                arr1element !== 1 ? 
+                arr2[arr1.indexOf(arr1element)] :
+                arr2[arr1.indexOf(arr1element)].slice(0,arr2.length+1)
+            )
+        )
+    )
+    return beforeJoin.join(" ")
+}
+
+const combineStringAdjustSingular = (arr1,arr2) => {
+    return arr1.length === arr2.length ? joinVarsAdjustSingular(arr1,arr2) : "Variables are not the same length";
+}
+
+console.log(combineStringAdjustSingular(amounts,animals));
