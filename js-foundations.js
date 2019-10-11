@@ -94,16 +94,19 @@ var animals = ["ducks", "elephants", "pangolins", "zebras", "giraffes", "penguin
 
 // 5a. Write a function that takes the two variables and returns a combined string. Expected output: "9 ducks 1 elephants 8 pangolins 16 zebras 5 giraffes 1 penguins 42 llamas"
 
-const combineString = (var1,var2) => {
-    return var1.length === var2.length ? 'function goes here' : "Variables are not the same length";
+const combineString = (arr1,arr2) => {
+    return arr1.length === arr2.length ? arr1.map(arr1element => (
+        arr1element.toString() + 
+        " " + 
+        arr2[arr1.indexOf(arr1element)])).join(" ") : "Variables are not the same length";
 }
 
-const joinVars = (var1, var2) => {
-    var1.map(x => x + var2.indexOf(var1));
-}
+// const joinVars = (arr1, arr2) => {
+//     return arr1.map(arr1element => (arr1element.toString() + " " + arr2[arr1.indexOf(arr1element)])).join(" ");
+// }
 
-console.log(joinVars(amounts,animals));
-// console.log(amounts.indexOf(amounts[2]));
+console.log(combineString(amounts,animals));
 
 
 // 5b. STRETCH: Create a function that combines the two variables and updates the animal to be singular if the animal's corresponding number is 1. Expected output: "9 ducks 1 elephant 8 pangolins 16 zebras 5 giraffes 1 penguin 42 llamas"
+
